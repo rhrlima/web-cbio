@@ -48,36 +48,39 @@ Design by Free CSS Templateshttp://www.freecsstemplates.orgReleased for free und
         </form>
       </div>
       <!-- start content -->
+
+      <script>
+          // The custom configuration options
+          var options = {
+              visualization: true,
+              enabledLegend: true,
+              defaultPagination: 10,
+              yAxisTitle: "Papers",
+              chartTitle: ""
+          }
+          $.get( "https://raw.githubusercontent.com/gres-ufpr/basic-informations/master/publications.bib", function( data ) {
+              $("#source").html(data);
+              // Create the object
+              var publications = new Publications("#source", "#table", "#chart", options);
+              // Display the results on the screen
+              publications.draw();
+          });
+      </script>
+
       <div id="content">
         <h1 class="pagetitle">Publications</h1>
-        <div id="source"></div>
-        <div id="table"></div>
-        <div id="chart"></div>
 
-        <div id="source">
-            @inproceedings{Souza2011Ant,
-                pages = {142-157},
-                volume = {9656},
-                address = {Szeged, Csongrád, Hungary},
-                booktitle = {Proceedings of the 3rd International Symposium on Search Based Software Engineering (SSBSE'11)},
-                year = {2011},
-                title = {An Ant Colony Optimization Approach to the Software Release Planning with Dependent Requirements},
-                author = {Jerffeson Teixeira De Souza and Camila Loiola Brito Maia and Thiago do Nascimento Ferreira and Rafael Augusto Ferreira do Carmo and Márcia Maria Albuquerque Brasil},
-            }
-        </div>
+        <div id="source" class="hide"></div>
+        <div id="chart"></div>
+        <div id="table"></div>
+
 
       </div>
     </div>
     <!-- end content -->
 
     <script type="text/javascript" charset="utf8" src="dist/publications.min.js"></script>
-
-    <script type="text/javascript" charset="utf8">
-    // Create the object
-    var publications = new Publications("#source", "#table", "#chart");
-    // Display the results on the screen
-    publications.draw();
-</script>
+    <script type="text/javascript" charset="utf8" src="dist/publications.js"></script>
 
   </body>
 </html>
